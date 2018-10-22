@@ -4,7 +4,8 @@
 # From root directory:
 # > conda build meta.yaml -c defaults -c conda-forge  --python=2.7
 
-build_dir=`pwd`
+start_dir=`pwd`
+build_dir=${start_dir}/build
 
 # Patch moab on linux
 if [ "$(uname -s)" = "Linux" ]; then
@@ -14,8 +15,8 @@ if [ "$(uname -s)" = "Linux" ]; then
 fi
 
 # Build MOAB
-mkdir -p ${build_dir}/build/moab
-cd ${build_dir}/build/moab
+mkdir -p ${build_dir}/moab
+cd ${build_dir}/moab
 cmake \
   -C "${RECIPE_DIR}/moab.cmake" \
   -DCMAKE_BUILD_TYPE=Release \
@@ -26,8 +27,8 @@ cmake --build . -j "${CPU_COUNT}" --target MOAB
 cmake --build . --target install
 
 # Build SMTK
-mkdir -p ${build_dir}/build/smtk
-cd ${build_dir}/build/smtk
+mkdir -p ${build_dir}/smtk
+cd ${build_dir}/smtk
 cmake \
   -DCMAKE_BUILD_TYPE=Release \
   -DSMTK_ENABLE_TESTING=OFF \

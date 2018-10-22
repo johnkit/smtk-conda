@@ -1,9 +1,11 @@
 package:
   name:    smtk
-  version: "3.0.0conda"
+  version: "master{{ environ['DATECODE'] }}"
 
 build:
-  number: 1
+  script_env:
+    - DATECODE
+    - CONDA_BLD_PATH
 
 source:
   - folder: moab
@@ -11,8 +13,8 @@ source:
     git_url: https://bitbucket.org/fathomteam/moab.git
 
   - folder: smtk
-    git_rev: conda-py2-package
-    git_url: https://gitlab.kitware.com/john.tourtellott/smtk.git
+    git_rev: master
+    git_url: https://gitlab.kitware.com/cmb/smtk.git
 
 requirements:
   host:
