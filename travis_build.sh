@@ -14,4 +14,6 @@ export DATECODE=`date +%y%m%d`
 conda config --set anaconda_upload no
 conda build --python=2.7 -c defaults -c conda-forge  meta.yaml
 ls -l $CONDA_BLD_PATH/$OS
-#anaconda -t $CONDA_UPLOAD_TOKEN upload -u $USER -l nightly $CONDA_BLD_PATH/$OS/$PKG_NAME-${DATECODE}-0.tar.bz2 --force
+
+conda install anaconda-client
+anaconda -t $CONDA_UPLOAD_TOKEN upload -u $USER -l nightly $CONDA_BLD_PATH/$OS/${PKG_NAME}${DATECODE}*.tar.bz2 --force
