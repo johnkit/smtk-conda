@@ -5,7 +5,7 @@ package:
 build:
   script_env:
     - DATECODE
-    - CONDA_BLD_PATH
+    - CONDA_BUILD_SYSROOT
 
 source:
   - folder: moab
