@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5dbd451..3bdae59 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -253,7 +253,7 @@ if ( ENABLE_SZIP )
+   set (MOAB_HAVE_SZIP ON)
+ endif (ENABLE_SZIP)
+ 
+-find_package( CURL )
++# find_package( CURL )
+ 
+ set (MOAB_HAVE_HDF5 OFF CACHE INTERNAL "Found necessary HDF5 components. Configure MOAB with it." )
+ set (MOAB_HAVE_HDF5_PARALLEL OFF CACHE INTERNAL "Found necessary parallel HDF5 components. Configure MOAB with it." )
+@@ -267,9 +267,9 @@ if ( ENABLE_HDF5 )
+   if ( MOAB_HAVE_MPI )
+     set (MOAB_HAVE_HDF5_PARALLEL ON)
+   endif ( )
+-  if ( CURL_FOUND )
+-    set( HDF5_LIBRARIES ${HDF5_LIBRARIES} ${CURL_LIBRARIES} )
+-  endif ( CURL_FOUND )
++  # if ( CURL_FOUND )
++  #   set( HDF5_LIBRARIES ${HDF5_LIBRARIES} ${CURL_LIBRARIES} )
++  # endif ( CURL_FOUND )
+   set( MOAB_LIBS ${HDF5_LIBRARIES} ${MOAB_LIBS} )
+   include_directories( ${HDF5_INCLUDE_DIR} src/io/mhdf/include )
+ endif ( ENABLE_HDF5 )

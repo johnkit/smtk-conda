@@ -22,7 +22,6 @@ requirements:
     - boost=1.67.0
     - eigen
     - hdf5
-    - libcurl
     - libnetcdf
     - nlohmann_json
   build:
@@ -44,9 +43,11 @@ requirements:
 outputs:
   - name: smtk
     files:
+      - include/smtk/3.0
+      - lib/*iMesh*
+      - lib/libcJSON.*
       - lib/libMOAB.*
-      - lib/cmake/Delaunay
-      - lib/cmake/SMTK
+      - lib/cmake
       - lib/libsmtk*
       - lib/python{{PY_VER}}/site-packages/smtk
 

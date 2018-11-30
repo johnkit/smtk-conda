@@ -16,6 +16,7 @@ build_dir=${start_dir}/build
 # Patch moab on linux
 echo Patching MOAB
 cd ${SRC_DIR}/moab
+git apply ${RECIPE_DIR}/moab-CMakeLists.txt.patch
 git apply ${RECIPE_DIR}/moab-src-io-mhdf-CMakeLists.txt.patch
 
 # Build MOAB
@@ -36,8 +37,13 @@ mkdir -p ${build_dir}/smtk
 cd ${build_dir}/smtk
 cmake \
   -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_TESTING=OFF \
+  -DSMTK_ENABLE_RGG_SESSION=OFF \
   -DSMTK_ENABLE_TESTING=OFF \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
+  -DBOOST_INCLUDEDIR=$PREFIX/include \
+  -DBOOST_LIBRARYDIR=$PREFIX/lib \
+  -DBoost_NO_SYSTEM_PATHS=ON \
   -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 \
   -DCMAKE_OSX_SYSROOT=$CONDA_BUILD_SYSROOT \
   -DPYTHON_EXECUTABLE=$PYTHON \
