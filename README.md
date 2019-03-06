@@ -24,11 +24,24 @@ the build machine. Run this command from a terminal:
 Note that DATECODE *must* be set as an environment variable. The
 preferred format is yymmdd, but you can use any string for testing.
 
+## If the build fails due to a "smudge error" when cloning smtk
+
+This occurs on some machines, and is due to some unknown issue with one
+particular git-lfs file (Basic2DFluid.sbt). Because the lfs files are
+not required to build smtk-conda, we can work around it. To disable
+git-lfs, we have added folder xdg_config_home, which contains a git
+config file. To build smtk-conda without pulling git-lfs file, add this
+to the command line:
+
+    XDG_CONFIG_HOME=${path-to-smtk-conda}/xdg_config_home  DATECODE= ...
+
+Not very elegant, but gets the job done for now.
+
 
 Other notes:
 
-* Only python2 packages are currently supported. (Python 3 might work,
-  but hasn't been tested.)
+* Packages have been build and tested for python versions 2.7 and 3.6 on
+  on linux (ubuntu) and macOS.
 * The conda-forge link is needed to import nlohmann_json, which is used
   in building smtk.
 * You do not need to run conda-build from a conda environment.
