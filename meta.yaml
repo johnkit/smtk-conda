@@ -12,6 +12,10 @@ source:
     git_rev: '6425a480ffe8e08b96453618fc5530e08e68ae8a'
     git_url: https://bitbucket.org/fathomteam/moab.git
 
+  - folder: pegtl
+    git_rev: '2.7.1'
+    git_url: https://github.com/taocpp/PEGTL.git
+
   - folder: smtk
     git_rev: master
     git_url: https://gitlab.kitware.com/cmb/smtk.git

@@ -13,7 +13,18 @@
 start_dir=`pwd`
 build_dir=${start_dir}/build
 
-# Patch moab on linux
+# Build PEGTL
+mkdir -p ${build_dir}/pegtl
+cd ${build_dir}/pegtl
+cmake \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DPEGTL_BUILD_EXAMPLES:BOOL=OFF \
+  -DPEGTL_BUILD_TESTS:BOOL=OFF \
+  -DCMAKE_INSTALL_PREFIX=$PREFIX \
+  "${SRC_DIR}/pegtl"
+cmake --build . -j "${CPU_COUNT}" --target install
+
+# Patch moab
 echo Patching MOAB
 cd ${SRC_DIR}/moab
 git apply ${RECIPE_DIR}/moab-CMakeLists.txt.patch
@@ -49,5 +60,6 @@ cmake \
   -DCMAKE_OSX_DEPLOYMENT_TARGET=10.9 \
   -DCMAKE_OSX_SYSROOT=$CONDA_BUILD_SYSROOT \
   -DPYTHON_EXECUTABLE=$PYTHON \
+  -Dpegtl_DIR=$PREFIX/share/pegtl/cmake \
   "${SRC_DIR}/smtk"
 cmake --build . -j "${CPU_COUNT}" --target install
