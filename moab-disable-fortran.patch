@@ -1,0 +1,116 @@
+Binary files moab_ft/.git/index and moab_ft_patched/.git/index differ
+diff -Nr -U5 moab_ft/CMakeLists.txt moab_ft_patched/CMakeLists.txt
+--- moab_ft/CMakeLists.txt	2018-01-04 13:55:02.000000000 -0500
++++ moab_ft_patched/CMakeLists.txt	2018-01-04 14:13:59.000000000 -0500
+@@ -1,27 +1,27 @@
+ cmake_minimum_required( VERSION 2.8.12 )
+ SET(PACKAGE_NAME "MOAB")
+ SET(PACKAGE_VERSION "5.0.1")
+ 
+-if (NOT WIN32)
+-  #This all breaks on windows.
+-  SET(CMAKE_Fortran_COMPILER_INIT ${CMAKE_GENERATOR_FC})
+-  SET(CMAKE_CXX_FLAGS_INIT "-fPIC -DPIC")
+-  SET(CMAKE_CXX_FLAGS_DEBUG_INIT "-O0 -g")
+-  SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
+-  SET(CMAKE_CXX_FLAGS_RELEASE_INIT "-O2 -DNDEBUG")
+-  SET(CMAKE_C_FLAGS_INIT "-fPIC -DPIC")
+-  SET(CMAKE_C_FLAGS_DEBUG_INIT "-O0 -g")
+-  SET(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
+-  SET(CMAKE_C_FLAGS_RELEASE_INIT "-O2 -DNDEBUG")
+-  SET(CMAKE_Fortran_FLAGS_INIT "-fPIC")
+-  SET(CMAKE_Fortran_FLAGS_DEBUG_INIT "-O0 -g")
+-  SET(CMAKE_Fortran_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
+-  SET(CMAKE_Fortran_FLAGS_RELEASE_INIT "-O2")
+-  SET(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS_INIT "")
+-  SET(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS_INIT "")
+-endif()
++#if (NOT WIN32)
++#  #This all breaks on windows.
++#  SET(CMAKE_Fortran_COMPILER_INIT ${CMAKE_GENERATOR_FC})
++#  SET(CMAKE_CXX_FLAGS_INIT "-fPIC -DPIC")
++#  SET(CMAKE_CXX_FLAGS_DEBUG_INIT "-O0 -g")
++#  SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
++#  SET(CMAKE_CXX_FLAGS_RELEASE_INIT "-O2 -DNDEBUG")
++#  SET(CMAKE_C_FLAGS_INIT "-fPIC -DPIC")
++#  SET(CMAKE_C_FLAGS_DEBUG_INIT "-O0 -g")
++#  SET(CMAKE_C_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
++#  SET(CMAKE_C_FLAGS_RELEASE_INIT "-O2 -DNDEBUG")
++#  SET(CMAKE_Fortran_FLAGS_INIT "-fPIC")
++#  SET(CMAKE_Fortran_FLAGS_DEBUG_INIT "-O0 -g")
++#  SET(CMAKE_Fortran_FLAGS_RELWITHDEBINFO_INIT "-O2 -g")
++#  SET(CMAKE_Fortran_FLAGS_RELEASE_INIT "-O2")
++#  SET(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS_INIT "")
++#  SET(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS_INIT "")
++#endif()
+ 
+ project( MOAB )
+ 
+ include(GNUInstallDirs)
+ 
+@@ -281,11 +281,11 @@
+   # set( MOAB_DEFINES "-DNETCDF_FILE ${MOAB_DEFINES}" )
+   set (MOAB_HAVE_NETCDF ON)
+   set (MOAB_HAVE_NETCDF_H 1)
+   include_directories( ${NETCDF_INCLUDES} )
+   set( MOAB_LIBS ${NETCDF_LIBRARIES} ${MOAB_LIBS} )
+-  # 
++  #
+   if ( PNETCDF_FOUND )
+     # find_package( PNetCDF REQUIRED )
+     set (MOAB_HAVE_PNETCDF ON)
+     include_directories( ${PNETCDF_INCLUDES} )
+     set( MOAB_LIBS ${PNETCDF_LIBRARIES} ${MOAB_LIBS} )
+@@ -394,31 +394,31 @@
+     "${CMAKE_CURRENT_SOURCE_DIR}/config/cmake_uninstall.cmake.in"
+     "${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+     IMMEDIATE @ONLY
+     )
+ 
+-enable_language(Fortran)
+-
+-# Include CMake's Fortran mangling evaluation macros
+-include(FortranCInterface)
+-
+-if ("${FortranCInterface_GLOBAL_CASE}" MATCHES "UPPER")
+-  set(FC_CASE "NAME")
+-else ("${FortranCInterface_GLOBAL_CASE}" MATCHES "UPPER")
+-  set(FC_CASE "name")
+-endif ("${FortranCInterface_GLOBAL_CASE}" MATCHES "UPPER")
+-if (NOT "${FortranCInterface_GLOBAL_SUFFIX}" STREQUAL "")
+-  set(FortranCInterface_GLOBAL_SUFFIX "## ${FortranCInterface_GLOBAL_SUFFIX}")
+-endif (NOT "${FortranCInterface_GLOBAL_SUFFIX}" STREQUAL "")
+-if (NOT "${FortranCInterface_GLOBAL__SUFFIX}" STREQUAL "")
+-  set(FortranCInterface_GLOBAL__SUFFIX "## ${FortranCInterface_GLOBAL__SUFFIX}")
+-endif (NOT "${FortranCInterface_GLOBAL__SUFFIX}" STREQUAL "")
+-
+-set(MOAB_F77_FUNC  "${FortranCInterface_GLOBAL_PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL_SUFFIX}")
+-set(MOAB_F77_FUNC_ "${FortranCInterface_GLOBAL__PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL__SUFFIX}")
+-set(MOAB_FC_FUNC   "${FortranCInterface_GLOBAL_PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL_SUFFIX}")
+-set(MOAB_FC_FUNC_  "${FortranCInterface_GLOBAL__PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL__SUFFIX}")
++#enable_language(Fortran)
++#
++## Include CMake's Fortran mangling evaluation macros
++#include(FortranCInterface)
++#
++#if ("${FortranCInterface_GLOBAL_CASE}" MATCHES "UPPER")
++#  set(FC_CASE "NAME")
++#else ("${FortranCInterface_GLOBAL_CASE}" MATCHES "UPPER")
++#  set(FC_CASE "name")
++#endif ("${FortranCInterface_GLOBAL_CASE}" MATCHES "UPPER")
++#if (NOT "${FortranCInterface_GLOBAL_SUFFIX}" STREQUAL "")
++#  set(FortranCInterface_GLOBAL_SUFFIX "## ${FortranCInterface_GLOBAL_SUFFIX}")
++#endif (NOT "${FortranCInterface_GLOBAL_SUFFIX}" STREQUAL "")
++#if (NOT "${FortranCInterface_GLOBAL__SUFFIX}" STREQUAL "")
++#  set(FortranCInterface_GLOBAL__SUFFIX "## ${FortranCInterface_GLOBAL__SUFFIX}")
++#endif (NOT "${FortranCInterface_GLOBAL__SUFFIX}" STREQUAL "")
++#
++#set(MOAB_F77_FUNC  "${FortranCInterface_GLOBAL_PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL_SUFFIX}")
++#set(MOAB_F77_FUNC_ "${FortranCInterface_GLOBAL__PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL__SUFFIX}")
++#set(MOAB_FC_FUNC   "${FortranCInterface_GLOBAL_PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL_SUFFIX}")
++#set(MOAB_FC_FUNC_  "${FortranCInterface_GLOBAL__PREFIX} ${FC_CASE} ${FortranCInterface_GLOBAL__SUFFIX}")
+ 
+ # Generate the CMake input header file and then pass it through configuration
+ ## execute_process( COMMAND cat MOABConfig.h.in COMMAND sed -e "s/#undef /#cmakedefine MOAB_/g"
+ #execute_process( COMMAND cat MOABConfig.h.in COMMAND sed -r "s/#undef ([A-Z].*)/#cmakedefine MOAB_\\1 @MOAB_\\1@/"
+ #  WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/config

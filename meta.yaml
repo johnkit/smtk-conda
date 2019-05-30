@@ -23,7 +23,7 @@ source:
 requirements:
   host:
     - python
-    - boost=1.67.0
+    - boost 1.67.0
     - eigen
     - hdf5
     - libnetcdf
@@ -31,16 +31,15 @@ requirements:
   build:
     - python
     - {{ compiler('cxx') }}
-    - {{ compiler('fortran') }}
     - cmake
     - git
     - make
     - pybind11
   run:
-    - boost=1.67.0
+    - boost 1.67.0
     - eigen
     - hdf5
-    - libboost=1.67.0
+    - libboost 1.67.0
     - netcdf4
     - nlohmann_json
     - python

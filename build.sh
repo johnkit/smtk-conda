@@ -28,6 +28,7 @@ cmake --build . -j "${CPU_COUNT}" --target install
 echo Patching MOAB
 cd ${SRC_DIR}/moab
 git apply ${RECIPE_DIR}/moab-CMakeLists.txt.patch
+git apply ${RECIPE_DIR}/moab-disable-fortran.patch
 git apply ${RECIPE_DIR}/moab-src-io-mhdf-CMakeLists.txt.patch
 
 # Build MOAB
