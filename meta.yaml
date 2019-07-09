@@ -26,6 +26,7 @@ requirements:
     - boost 1.67.0
     - eigen
     - hdf5
+    - libarchive
     - libnetcdf
     - nlohmann_json
   build:
@@ -39,6 +40,7 @@ requirements:
     - boost 1.67.0
     - eigen
     - hdf5
+    - libarchive
     - libboost 1.67.0
     - netcdf4
     - nlohmann_json
