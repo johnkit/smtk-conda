@@ -2,8 +2,9 @@
 
 # Side note: need to add conda-forge to the set of archives
 # From root directory:
-# > conda build meta.yaml -c defaults -c conda-forge  --python=2.7
+# > conda build meta.yaml -c defaults -c conda-forge  --python=3.7
 #
+# Todo check this:
 # Building on OS X does not work with current SDK (10.14).
 # Recommended build requires 10.9 SDK.
 # To build on OS X using python 3.6:
@@ -54,6 +55,7 @@ cmake \
   -DSMTK_ENABLE_OSCILLATOR_SESSION=OFF \
   -DSMTK_ENABLE_RGG_SESSION=OFF \
   -DSMTK_ENABLE_TESTING=OFF \
+  -DSMTK_PYTHON_VERSION:STRING=3 \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DBOOST_INCLUDEDIR=$PREFIX/include \
   -DBOOST_LIBRARYDIR=$PREFIX/lib \

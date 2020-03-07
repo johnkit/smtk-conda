@@ -19,7 +19,7 @@ package. The smtk-conda package contains these modules:
 To create the package, you must have conda and conda-build installed on
 the build machine. Run this command from a terminal:
 
-    DATECODE="" conda build --python=2.7 -c defaults -c conda-forge  meta.yaml
+    DATECODE="" conda build --python=3.7 -c defaults -c conda-forge  meta.yaml
 
 Note that DATECODE *must* be set as an environment variable. The
 preferred format is yymmdd, but you can use any string for testing.

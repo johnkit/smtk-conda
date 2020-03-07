@@ -12,7 +12,7 @@ export CONDA_BLD_PATH=~/conda-bld
 export DATECODE=`date +%y%m%d`
 
 conda config --set anaconda_upload no
-conda build --python=2.7 -c defaults -c conda-forge  meta.yaml
+conda build --python=3.7 -c defaults -c conda-forge  meta.yaml
 ls -l $CONDA_BLD_PATH/$OS
 
 conda install anaconda-client
